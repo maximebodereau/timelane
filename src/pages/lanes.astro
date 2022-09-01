@@ -1,0 +1,28 @@
+---
+import Lane from "../components/molecules/lane.astro";
+import { Deta } from "deta";
+import { Axios } from "axios";
+
+const deta = Deta("a08u7hqt_K8E8ZA7hn16GHosnLEzF2LiUmJh19Cyn");
+const timelane = deta.Base("timelane");
+
+const headers = "X-API-Key: a08u7hqt_K8E8ZA7hn16GHosnLEzF2LiUmJh19Cyn";
+
+const response = await timelane.fetch().then((response) => response.items);
+const lanes = await response;
+---
+
+
+
+<div class="container-fluid">
+    <h4 class="mt-3">Latest Timelanes</h4>
+    <div class="row">
+        {
+            response.map((item) => (
+                <div class="col-3 mb-3 mt-3">
+                    <Lane title={item.name} date={item.date} desc={item.description} />
+                </div>
+            ))
+        }
+    </div>
+</div>
