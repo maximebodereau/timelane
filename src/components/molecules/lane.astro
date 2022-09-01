@@ -1,0 +1,27 @@
+---
+export interface Props {
+    title;
+    date;
+    desc;
+    href;
+    picto;
+    color;
+}
+const { href, title, date, picto , color, desc} = Astro.props as Props;
+
+---
+
+<div class="card h-100 shadow-sm">
+    <div class="card-body h-100">
+        <div class="pb-4">
+            <img height="35px" src={picto} alt="" />
+        </div>
+        <h5>{title}</h5>
+        <p class="card-text text-muted">{date}</p>
+        <p class="card-text text-muted">{desc}</p>
+    </div>
+</div>
+
+<style>
+
+</style>
